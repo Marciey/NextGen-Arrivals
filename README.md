@@ -52,19 +52,6 @@ A modern, responsive landing page for the NextGen SmartWatch X, featuring:
 
 - Host the static files (`index.html`, `styles.css`, `script.js`, `src/` images) on any web server or static hosting (GitHub Pages, Netlify, Vercel, etc.)
 
-## How to Push Changes to GitHub
-
-1. Stage and commit your changes:
-   ```sh
-   git add .
-   git commit -m "Describe your changes"
-   ```
-2. Push to your GitHub repository:
-   ```sh
-   git push origin main
-   ```
-   (Replace `main` with your branch name if different.)
-
 ## Credits
 
 - Designed and developed by NextGen Arrivals Team
