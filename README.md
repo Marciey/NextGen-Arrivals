@@ -48,9 +48,22 @@ A modern, responsive landing page for the NextGen SmartWatch X, featuring:
 4. **Test Responsiveness:**
    - Use Chrome DevTools (Device Toolbar) to preview on mobile
 
-## How to Deploy
+## Deployment: GitHub Pages
 
-- Host the static files (`index.html`, `styles.css`, `script.js`, `src/` images) on any web server or static hosting (GitHub Pages, Netlify, Vercel, etc.)
+You can deploy this static website for free using GitHub Pages:
+
+1. **Push your code to GitHub** (branch: `main`).
+2. **Enable GitHub Pages** in your repository settings:
+   - Go to your repo on GitHub
+   - Click on `Settings` > `Pages`
+   - Under "Source", select `main` branch and `/ (root)` folder
+   - Save
+3. **Wait a few minutes** for deployment.
+4. **Visit your site:**
+   - `https://<yourusername>.github.io/<your-repo>/`
+   - (If your repo is named `your-username.github.io`, use `https://<yourusername>.github.io/`)
+5. **Update your site** by pushing new commits to the `main` branch.
+6. **Share your URL** for your portfolio or demo!
 
 ## Credits
 
