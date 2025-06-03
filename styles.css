@@ -180,6 +180,72 @@ body {
     color: var(--primary);
 }
 
+.contact-section {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+}
+.contact-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: stretch;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+    resize: none;
+}
+.contact-form textarea {
+    min-height: 90px;
+}
+.contact-form button[type="submit"] {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+}
+.contact-form button[type="submit"]:hover {
+    background: var(--accent);
+    color: #222;
+}
+.error-message {
+    color: #e53935;
+    font-size: 0.95rem;
+    min-height: 1.2em;
+    text-align: left;
+    margin-left: 0.2rem;
+}
+.success-message {
+    color: #1aaf5d;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    min-height: 1.2em;
+}
 .footer {
     background: var(--footer-bg);
     color: var(--footer-text);
@@ -360,6 +426,13 @@ body {
     .signup-form button {
         width: 100%;
         font-size: 1rem;
+    }
+    .contact-section {
+        padding: 1.5rem 0.5rem;
+        max-width: 98vw;
+    }
+    .contact-section h2 {
+        font-size: 1.3rem;
     }
     .footer-content {
         flex-direction: column;

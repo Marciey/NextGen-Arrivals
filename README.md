@@ -8,6 +8,7 @@ A modern, responsive landing page for the NextGen SmartWatch X, featuring:
 - Early access signup form (front-end only)
 - Feature highlights with icons
 - Social media links
+- **Contact form with validation** (Name, Email, Message, error/success messages)
 
 ## Features
 
@@ -26,48 +27,20 @@ A modern, responsive landing page for the NextGen SmartWatch X, featuring:
   - Collects email for early access (no backend integration)
   - Shows a thank you message on submit
 
+- **Contact Form:**
+  - Fields: Name, Email, Message
+  - JavaScript validation for non-empty fields and valid email (regex)
+  - Error messages shown below each field if invalid
+  - Prevents submission if invalid, shows success message if valid
+  - Handles edge cases (empty, invalid email, special characters)
+
 - **Tech Stack:**
   - HTML5
   - CSS3 (custom properties, flex, grid, media queries)
-  - JavaScript (for nav toggle, dark mode, and form handling)
-
-## Getting Started
-
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
-   ```
-2. **Open `index.html` in your browser.**
-
-3. **Development:**
-   - Edit `styles.css` for design changes
-   - Edit `script.js` for interactivity
-   - Replace images in the `src/` folder as needed
-
-4. **Test Responsiveness:**
-   - Use Chrome DevTools (Device Toolbar) to preview on mobile
-
-## Deployment: GitHub Pages
-
-You can deploy this static website for free using GitHub Pages:
-
-1. **Push your code to GitHub** (branch: `main`).
-2. **Enable GitHub Pages** in your repository settings:
-   - Go to your repo on GitHub
-   - Click on `Settings` > `Pages`
-   - Under "Source", select `main` branch and `/ (root)` folder
-   - Save
-3. **Wait a few minutes** for deployment.
-4. **Visit your site:**
-   - `https://<yourusername>.github.io/<your-repo>/`
-   - (If your repo is named `your-username.github.io`, use `https://<yourusername>.github.io/`)
-5. **Update your site** by pushing new commits to the `main` branch.
-6. **Share your URL** for your portfolio or demo!
+  - JavaScript (for nav toggle, dark mode, form handling, and contact validation)
 
 ## Credits
 
-- Designed and developed by NextGen Arrivals Team
 - Icons and images are placeholders—replace with your own as needed
 
 ---
