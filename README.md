@@ -1,196 +1,201 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # NextGen Arrivals Landing Page
+# Orderly Wares - Modern E-Commerce Storefront
+>>>>>>> 12b3b64 (Add all project files)
 
-A modern, responsive landing page for the NextGen SmartWatch X, featuring:
+A fully functional e-commerce website built with Next.js, TypeScript, Tailwind CSS, and Supabase. Features a modern dark theme design with complete shopping cart functionality, user authentication, and admin capabilities.
 
-- Mobile-first, responsive design using CSS media queries
-- Collapsible navigation menu for mobile
-- Dark mode toggle
-- Early access signup form (front-end only)
-- Feature highlights with icons
-- Social media links
-- **Contact form with validation** (Name, Email, Message, error/success messages)
+## 🚀 Features
 
-## Features
-
-- **Responsive Layout:**
-  - Uses CSS Flexbox and Grid for flexible layouts
-  - Media queries for breakpoints at 900px and 768px
-  - Stacks columns vertically and reduces font sizes on mobile
-  - Navigation collapses into a hamburger menu on small screens
-  - Images scale fluidly within containers
-  - Prevents horizontal overflow and scrolling issues
-
-- **Dark Mode:**
-  - Toggle button to switch between light and dark themes
-
-- **Signup Form:**
-  - Collects email for early access (no backend integration)
-  - Shows a thank you message on submit
-
-- **Contact Form:**
-  - Fields: Name, Email, Message
-  - JavaScript validation for non-empty fields and valid email (regex)
-  - Error messages shown below each field if invalid
-  - Prevents submission if invalid, shows success message if valid
-  - Handles edge cases (empty, invalid email, special characters)
-
-- **Tech Stack:**
-  - HTML5
-  - CSS3 (custom properties, flex, grid, media queries)
-  - JavaScript (for nav toggle, dark mode, form handling, and contact validation)
-
-## Credits
-
-- Icons and images are placeholders—replace with your own as needed
-
----
-
-© 2025 NextGen Arrivals. All rights reserved.
-=======
-# E-Commerce Storefront with Admin Panel
-
-A modern, full-stack e-commerce application built with Next.js, MongoDB, Stripe, and Tailwind CSS. Features include product catalog, search and filtering, shopping cart, checkout flow, user authentication, and admin dashboard.
-
-## Features
-
-### User Features
-- 🏠 **Homepage** with featured products and company info
-- 🛍️ **Product Catalog** with search and category filtering
-- 🛒 **Shopping Cart** functionality
-- 💳 **Secure Checkout** with Stripe integration (test mode)
-- 👤 **User Authentication** (login/register)
-- 📱 **Responsive Design** for all devices
-
-### Admin Features
-- 📊 **Admin Dashboard** with sales analytics
-- 📦 **Product Management** (CRUD operations)
-- 👥 **User Management**
-- 🛒 **Order Management**
-- 🔐 **Role-based Access Control**
-
-## Tech Stack
-
-- **Frontend**: Next.js 15, React, TypeScript, Tailwind CSS
-- **Backend**: Next.js API Routes, NextAuth.js
-- **Database**: MongoDB with Mongoose
-- **Payment**: Stripe (Test Mode)
+- **Responsive Design** - Works perfectly on desktop, tablet, and mobile
+- **Real-time Updates** - Live cart updates and user session management
+- **Styling**: Tailwind CSS with custom design system
 - **Icons**: Lucide React
-- **Authentication**: NextAuth.js with credentials provider
+- **State Management**: React Context API
+- Supabase account
+- Git
 
-## Getting Started
+## 🚀 Quick Start
 
-### Prerequisites
+git clone <your-repo-url>
+cd e-commerce-storefront
+```
 
-- Node.js 18+ installed
-- MongoDB database (local or cloud)
-- Stripe account for payment processing
+### 2. Install Dependencies
 
-### Installation
+```bash
+npm install
+```
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd ecommerce-storefront
-   ```
+### 3. Set Up Supabase
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+1. Create a new project at [supabase.com](https://supabase.com)
+2. Go to Settings > API to get your project URL and keys
+3. Create the following tables in your Supabase database:
 
-3. **Set up environment variables**
-   Create a `.env.local` file in the root directory:
-   ```env
-   # Database
-   MONGODB_URI=mongodb://localhost:27017/ecommerce-storefront
-   
-   # Authentication
-   NEXTAUTH_SECRET=your-secret-key-here
-   NEXTAUTH_URL=http://localhost:3000
-   
-   # Stripe (Test Mode)
-   STRIPE_PUBLISHABLE_KEY=pk_test_your_publishable_key_here
-   STRIPE_SECRET_KEY=sk_test_your_secret_key_here
-   
-   # Admin Default User
-   ADMIN_EMAIL=admin@example.com
-   ADMIN_PASSWORD=admin123
-   ```
+#### Products Table
+```sql
+CREATE TABLE products (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  description TEXT,
+  price DECIMAL(10,2) NOT NULL,
+  images TEXT[],
+  category VARCHAR NOT NULL,
+  stock INTEGER DEFAULT 0,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+```
 
-4. **Seed the database** (optional)
-   ```bash
-   node scripts/seed.js
-   ```
+#### Users Table
+```sql
+CREATE TABLE users (
+  id UUID REFERENCES auth.users(id) PRIMARY KEY,
+  email VARCHAR NOT NULL,
+  name VARCHAR NOT NULL,
+  role VARCHAR DEFAULT 'user' CHECK (role IN ('user', 'admin')),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+```
 
-5. **Run the development server**
-   ```bash
-   npm run dev
-   ```
+#### Orders Table
+```sql
+CREATE TABLE orders (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id UUID REFERENCES users(id),
+  status VARCHAR DEFAULT 'pending' CHECK (status IN ('pending', 'processing', 'shipped', 'delivered', 'cancelled')),
+  total DECIMAL(10,2) NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+```
+Create a `.env.local` file in the root directory:
 
-6. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
 
-## Test Accounts
+# App Configuration
+### 5. Seed the Database
 
-After seeding the database, you can use these test accounts:
+Run the seed script to populate your database with sample products:
 
-- **Admin**: admin@example.com / admin123
-- **User**: user@example.com / user123
+```bash
+npm run seed
+```
 
-## API Endpoints
+### 6. Start the Development Server
 
-### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/signin` - Sign in user
-- `POST /api/auth/signout` - Sign out user
+```bash
+npm run dev
+```
 
-### Products
-- `GET /api/products` - Get all products (with pagination, search, filtering)
-- `POST /api/products` - Create new product (admin only)
-- `GET /api/products/[id]` - Get single product
-- `PUT /api/products/[id]` - Update product (admin only)
-- `DELETE /api/products/[id]` - Delete product (admin only)
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-### Orders
-- `GET /api/orders` - Get user orders
-- `POST /api/orders` - Create new order
-- `GET /api/orders/[id]` - Get single order
-- `PUT /api/orders/[id]` - Update order status (admin only)
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 src/
-├── app/                    # Next.js app router pages
+├── app/                    # Next.js 14 app directory
 │   ├── api/               # API routes
 │   ├── auth/              # Authentication pages
-│   ├── admin/             # Admin dashboard
-│   ├── products/          # Product pages
-│   └── layout.tsx         # Root layout
-├── components/            # Reusable components
-├── lib/                   # Utility functions
-├── models/                # Database models
-└── types/                 # TypeScript type definitions
+│   ├── cart/              # Cart page
+│   ├── checkout/          # Checkout page
+│   ├── products/          # Products page
+
+## 🔧 Configuration
+
+### Supabase Setup
+
+1. **Enable Row Level Security (RLS)**: Go to Authentication > Policies in your Supabase dashboard
+2. **Set up Storage**: Create a storage bucket for product images
+3. **Configure Auth**: Set up email templates and redirect URLs
+
+### Customization
+
+- **Colors**: Modify `tailwind.config.js` to change the color scheme
+- **Styling**: Update `src/app/globals.css` for custom styles
+- **Components**: Edit components in `src/components/` to match your brand
+
+## 🚀 Deployment
+
+
+1. Push your code to GitHub
+3. Add environment variables in Vercel dashboard
+4. Deploy!
+
+### Other Platforms
+
+The app can be deployed to any platform that supports Next.js:
+- Netlify
+- Railway
+- DigitalOcean App Platform
+- AWS Amplify
+
+## 🔐 Authentication
+
+The app uses Supabase Auth with the following features:
+- Email/password authentication
+- User roles (user/admin)
+- Protected routes
+- Session management
+
+### Test Accounts
+
+For testing purposes, you can create these accounts:
+- **Admin**: admin@example.com / admin123
+- **User**: user@example.com / user123
+
+## 🛒 Shopping Cart Features
+
+- Add/remove items
+- Update quantities
+- Persistent storage (localStorage)
+- Real-time cart count
+- Clear cart functionality
+- Stock validation
+
+## 💳 Checkout Process
+
+1. **Shipping Information** - Collect delivery details
+2. **Payment** - Credit card processing (simulated)
+3. **Order Confirmation** - Success page with order details
+
+## 👨‍💼 Admin Features
+
+- Product management (CRUD operations)
+- Order management
+- User management
+- Analytics dashboard
+
+## 🎨 Design System
+
+The app uses a custom design system with:
+- **Primary Colors**: Slate grays for the dark theme
+- **Accent Colors**: Orange/amber for highlights
+- **Typography**: Inter font family
+- **Components**: Reusable card, button, and input styles
+
+## 🔧 Development
+
+### Available Scripts
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npm run seed         # Seed database with sample data
 ```
 
-## Deployment
+### Code Style
 
-### Environment Setup
-1. Set up a MongoDB database (MongoDB Atlas recommended)
-2. Configure Stripe with your live keys
-3. Set up proper environment variables
-4. Deploy to Vercel, Netlify, or your preferred platform
+- TypeScript for type safety
+- ESLint for code quality
+- Prettier for formatting
+- Tailwind CSS for styling
 
-### Production Considerations
-- Use live Stripe keys for production
-- Set up proper SSL certificates
-- Configure proper CORS settings
-- Set up monitoring and logging
-- Implement proper error handling
-- Add rate limiting for API endpoints
-
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -198,15 +203,33 @@ src/
 4. Add tests if applicable
 5. Submit a pull request
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
 
-## Support
+## 🆘 Support
 
-For support, email support@estore.com or create an issue on GitHub.
+If you encounter any issues:
+1. Check the [Supabase documentation](https://supabase.com/docs)
+2. Review the Next.js documentation
+3. Open an issue in this repository
+
+## 🎯 Roadmap
+
+- [ ] Stripe payment integration
+- [ ] Email notifications
+- [ ] Product reviews and ratings
+- [ ] Wishlist functionality
+- [ ] Advanced search filters
+- [ ] Mobile app
+- [ ] Multi-language support
+- [ ] Analytics dashboard
 
 ---
 
+<<<<<<< HEAD
 **Note**: This is a demo application for educational purposes. The Stripe integration is set to test mode. For production use, ensure proper security measures and use live Stripe keys.
 >>>>>>> e801de1 (Initial commit: E-Commerce Storefront with Admin Panel)
+=======
+Built with ❤️ using Next.js, TypeScript, and Supabase
+>>>>>>> 12b3b64 (Add all project files)

@@ -1,55 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import connectDB from '@/lib/mongodb';
-import Product from '@/models/Product';
-import { authOptions } from '@/lib/auth';
+import { createServerSupabaseClient } from '@/lib/supabase';
 
-export async function GET(req: NextRequest) {
+export async function GET(request: NextRequest) {
   try {
-    await connectDB();
-
-    const { searchParams } = new URL(req.url);
-    const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || '12');
+    const supabase = createServerSupabaseClient();
+    
+    const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
     const search = searchParams.get('search');
-    const featured = searchParams.get('featured');
-
-    const skip = (page - 1) * limit;
-
-    // Build query
-    let query: any = {};
+    
+    let query = supabase
+      .from('products')
+      .select('*')
+      .order('created_at', { ascending: false });
     
     if (category) {
-      query.category = category;
+      query = query.eq('category', category);
     }
     
     if (search) {
-      query.$text = { $search: search };
+      query = query.or(`name.ilike.%${search}%,description.ilike.%${search}%`);
     }
     
-    if (featured === 'true') {
-      query.featured = true;
+    const { data, error } = await query;
+    
+    if (error) {
+      console.error('Error fetching products:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch products' },
+        { status: 500 }
+      );
     }
-
-    const products = await Product.find(query)
-      .skip(skip)
-      .limit(limit)
-      .sort({ createdAt: -1 });
-
-    const total = await Product.countDocuments(query);
-
-    return NextResponse.json({
-      products,
-      pagination: {
-        page,
-        limit,
-        total,
-        pages: Math.ceil(total / limit),
-      },
-    });
+    
+    return NextResponse.json(data);
   } catch (error) {
-    console.error('Get products error:', error);
+    console.error('Error in products API:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -57,26 +42,28 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
+    const supabase = createServerSupabaseClient();
+    const body = await request.json();
     
-    if (!session || session.user.role !== 'admin') {
+    const { data, error } = await supabase
+      .from('products')
+      .insert([body])
+      .select()
+      .single();
+    
+    if (error) {
+      console.error('Error creating product:', error);
       return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
+        { error: 'Failed to create product' },
+        { status: 500 }
       );
     }
-
-    const productData = await req.json();
-
-    await connectDB();
-
-    const product = await Product.create(productData);
-
-    return NextResponse.json(product, { status: 201 });
+    
+    return NextResponse.json(data);
   } catch (error) {
-    console.error('Create product error:', error);
+    console.error('Error in products POST API:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

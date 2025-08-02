@@ -1,35 +1,35 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import Providers from './providers'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { CartProvider } from '@/contexts/CartContext';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'E-Commerce Storefront',
-  description: 'Modern e-commerce storefront with admin panel',
-}
+  title: 'Orderly Wares - Premium Electronics & Accessories',
+  description: 'Discover amazing products at unbeatable prices. Shop with confidence and enjoy fast, secure delivery.',
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
-          <div className="min-h-screen flex flex-col">
+        <CartProvider>
+          <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-1">
               {children}
             </main>
             <Footer />
           </div>
-        </Providers>
+        </CartProvider>
       </body>
     </html>
-  )
+  );
 }
