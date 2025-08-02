@@ -3,95 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGen Arrivals</title>
+    <title>Orderly Wares - Modern E-Commerce</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
-        <div class="logo-nav">
-            <img src="src/logo.png" alt="NextGen Arrivals Logo" class="logo">
-            <nav class="nav">
-                <a href="#features">Features</a>
-                <a href="#signup">Early Access</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-            <button class="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Orderly Wares</h1>
+                </div>
+                <nav class="nav">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#products" class="nav-link">Products</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="cart-btn" aria-label="Shopping Cart">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 22a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                            <path d="M20 22a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                        </svg>
+                        <span class="cart-count">0</span>
+                    </button>
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
+
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Experience the Future: NextGen SmartWatch X</h1>
-                <p>Unleash innovation on your wrist. Limited-time exclusive discounts for early adopters. Be the first to own the future of wearable tech.</p>
-                <a href="#signup" class="cta-btn">Pre-order Today</a>
-            </div>
-            <div class="hero-image">
-                <img src="src/smartwatch-hero.jpg" alt="NextGen SmartWatch X">
-            </div>
-        </section>
-        <section id="features" class="features">
-            <h2>Key Features</h2>
-            <div class="features-grid">
-                <div class="feature">
-                    <img src="src/feature1.png" alt="AI Health Tracking">
-                    <h3>AI Health Tracking</h3>
-                    <p>Advanced sensors and AI for real-time health insights.</p>
-                </div>
-                <div class="feature">
-                    <img src="src/feature2.png" alt="Ultra HD Display">
-                    <h3>Ultra HD Display</h3>
-                    <p>Stunning clarity with always-on AMOLED screen.</p>
-                </div>
-                <div class="feature">
-                    <img src="src/feature3.png" alt="7-Day Battery">
-                    <h3>7-Day Battery</h3>
-                    <p>Go further with industry-leading battery life.</p>
-                </div>
-                <div class="feature">
-                    <img src="src/feature4.png" alt="Seamless Connectivity">
-                    <h3>Seamless Connectivity</h3>
-                    <p>Effortless sync with all your devices and apps.</p>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Discover Quality Products</h1>
+                    <p class="hero-subtitle">Curated collection of premium items for your lifestyle</p>
+                    <a href="#products" class="cta-button">Shop Now</a>
                 </div>
             </div>
         </section>
-        <section id="signup" class="signup">
-            <h2>Get Early Access & Exclusive Discounts</h2>
-            <form class="signup-form">
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit">Sign Up</button>
-            </form>
+
+        <section id="products" class="products">
+            <div class="container">
+                <h2 class="section-title">Featured Products</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="src/feature1.png" alt="Premium Watch">
+                            <div class="product-overlay">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Premium Watch</h3>
+                            <p class="product-description">Elegant timepiece with premium craftsmanship</p>
+                            <div class="product-price">$299.99</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="src/feature2.png" alt="Wireless Headphones">
+                            <div class="product-overlay">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Wireless Headphones</h3>
+                            <p class="product-description">High-quality sound with noise cancellation</p>
+                            <div class="product-price">$199.99</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="src/feature3.png" alt="Smart Speaker">
+                            <div class="product-overlay">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Smart Speaker</h3>
+                            <p class="product-description">Voice-controlled speaker with premium audio</p>
+                            <div class="product-price">$149.99</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="src/feature4.png" alt="Fitness Tracker">
+                            <div class="product-overlay">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Fitness Tracker</h3>
+                            <p class="product-description">Advanced health monitoring with GPS</p>
+                            <div class="product-price">$89.99</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="src/smartwatch-hero.jpg" alt="Smart Watch">
+                            <div class="product-overlay">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Smart Watch</h3>
+                            <p class="product-description">Next-generation wearable technology</p>
+                            <div class="product-price">$399.99</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="src/logo.png" alt="Premium Accessories">
+                            <div class="product-overlay">
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Premium Accessories</h3>
+                            <p class="product-description">Quality accessories for every need</p>
+                            <div class="product-price">$79.99</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section id="contact" class="contact-section">
-            <h2>Contact Us</h2>
-            <form class="contact-form" novalidate>
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <div class="error-message" id="name-error"></div>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2 class="section-title">About Orderly Wares</h2>
+                    <p class="about-text">
+                        We curate the finest selection of premium products, bringing you quality and style in every item. 
+                        Our commitment to excellence ensures that every product meets our high standards.
+                    </p>
+                    <div class="features-grid">
+                        <div class="feature">
+                            <div class="feature-icon">✨</div>
+                            <h3>Premium Quality</h3>
+                            <p>Carefully selected products that meet our high standards</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🚚</div>
+                            <h3>Fast Shipping</h3>
+                            <p>Quick and reliable delivery to your doorstep</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🛡️</div>
+                            <h3>Secure Shopping</h3>
+                            <p>Safe and protected transactions every time</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <div class="error-message" id="email-error"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="contact-content">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-                    <div class="error-message" id="message-error"></div>
-                </div>
-                <button type="submit">Send Message</button>
-                <div class="success-message" id="contact-success"></div>
-            </form>
+            </div>
         </section>
     </main>
+
     <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2025 NextGen Arrivals. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#" aria-label="Twitter"><img src="src/twitter.svg" alt="Twitter"></a>
-                <a href="#" aria-label="Instagram"><img src="src/instagram.svg" alt="Instagram"></a>
-                <a href="#" aria-label="Facebook"><img src="src/facebook.svg" alt="Facebook"></a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Orderly Wares</h3>
+                    <p>Quality products for your lifestyle</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#products">Products</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <img src="src/facebook.svg" alt="Facebook">
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <img src="src/instagram.svg" alt="Instagram">
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <img src="src/twitter.svg" alt="Twitter">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Orderly Wares. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
