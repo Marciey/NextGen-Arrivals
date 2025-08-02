@@ -69,4 +69,4 @@ A modern, responsive landing page for the NextGen SmartWatch X, featuring:
 
 ---
 
-© 2025 NextGen Arrivals. All rights reserved.
+© 2025 NextGen Arrivals. All rights reserved. - Deployed via GitHub Pages
